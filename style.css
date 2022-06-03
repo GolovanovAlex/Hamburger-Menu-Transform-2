@@ -70,4 +70,20 @@ body {
   margin-top: 1.5em;
 }
 /* ---- ---- Burger 1 ---- ---- */
-.burger1
+.burger1 {
+  transition: all 0.7s, font-size 0s;
+  transition-timing-function: cubic-bezier(0.68, -0.35, 0.265, 1.35);
+}
+.burger1 > div {
+  transition: all 0.1s 0.3s, font-size 0s;
+}
+.burger1::before,
+.burger1::after {
+  transition: all 0.3s 0.2s, font-size 0s;
+}
+.burger1.toggled {
+  transform: rotate(180deg);
+}
+.burger1 > div::before {
+  transform: rotate(45deg) translate(1.1em, 1em);
+}
