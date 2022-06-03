@@ -3,3 +3,56 @@
   --color1: #f0ffff;
   --borderRadius: 1em;
 }
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 1rem;
+  background: #24273b;
+  height: 100%;
+  color: #9c9cab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 4rem;
+}
+.section {
+  background-color: blue;
+}
+.burger {
+  font-size: var(--font-size);
+  cursor: pointer;
+  padding: 3em 1.5em;
+}
+.burger.showHitArea {
+  border: 1px solid red;
+}
+.burger > div {
+  width: 4em;
+  height: 0.5em;
+  border-radius: var(--borderRadius);
+  background: var(--color1);
+}
+.burger::before,
+.burger::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 4em;
+  height: 0.5em;
+  background: var(--color1);
+  border-radius: var(--borderRadius);
+  transition: font-size 0s;
+}
+.burger::before {
+  margin-top: -1.5em;
+}
+.burger::after {
+  margin-top: 1.5em;
+}
