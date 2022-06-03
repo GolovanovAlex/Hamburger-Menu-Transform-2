@@ -3,12 +3,11 @@
   --color1: #f0ffff;
   --borderRadius: 1em;
 }
-html {
-  box-sizing: border-box;
-}
+
 *,
 *:before,
 *:after {
+  box-sizing: border-box;
   box-sizing: inherit;
 }
 body {
@@ -22,8 +21,22 @@ body {
   flex-direction: column;
   margin: 4rem;
 }
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .section {
-  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: #151728;
+  border-radius: 4px;
+  margin: 0.5rem;
+  box-shadow: 0 2px 4px #00000026, 0 3px 6px #0000001f;
 }
 .burger {
   font-size: var(--font-size);
@@ -56,3 +69,5 @@ body {
 .burger::after {
   margin-top: 1.5em;
 }
+/* ---- ---- Burger 1 ---- ---- */
+.burger1
