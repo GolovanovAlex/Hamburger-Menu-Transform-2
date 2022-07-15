@@ -1,6 +1,4 @@
-# Hamburger-Menu-Transform-2
-
-# On/Off Element Collaps
+# Hamburger Menu Transform 2
 
 ### Use Skills
 
