@@ -10,9 +10,6 @@
 
 [Demo Link <br>![CodePen](https://img.shields.io/badge/Codepen-000000?style=for-the-badge&logo=codepen&logoColor=white)](https://codepen.io/AlexGolovanov/pen/GRQGgvb)
 
-
-![onoff](readme/onoff.gif)
-
 ## Info
 
 Создано на основе видео с Youtube канала.  
