@@ -1,4 +1,4 @@
-# Hamburger Menu Transform 2
+# Hamburger Menu Transform Templates
 
 ### Use Skills
 
