@@ -1,0 +1,507 @@
+:root {
+  --font-size: 1; // Scale is using font-size in rems;
+  --color1: #f0ffff;
+  --borderRadius: 1em;
+}
+
+.burger {
+  font-size: var(--font-size);
+  cursor: pointer;
+  padding: 3em 1.5em; ///////////////// touch area size
+  &.showHitArea {
+    border: 1px solid olive;
+  }
+  & > div {
+    width: 4em;
+    height: 0.5em;
+    border-radius: var(--borderRadius);
+    background: var(--color1);
+    &::before,
+    &::after {
+      transition: font-size 0s;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 4em;
+      height: 0.5em;
+      background: var(--color1);
+      border-radius: var(--borderRadius);
+    }
+    &::before {
+      margin-top: -1.5em;
+    }
+    &::after {
+      margin-top: 1.5em;
+    }
+  }
+}
+
+.burger1 {
+  transition: all 0.7s, font-size 0s;
+  transition-timing-function: cubic-bezier(0.68, -0.35, 0.265, 1.35);
+  & > div {
+    transition: all 0.1s 0.3s, font-size 0s;
+    &::before,
+    &::after {
+      transition: all 0.3s 0.2s, font-size 0s;
+    }
+  }
+  &.toggled {
+    transform: rotate(180deg);
+    > div::before {
+      transform: rotate(45deg) translate(1.1em, 1em);
+    }
+    > div {
+      background: transparent;
+    }
+    > div::after {
+      transform: rotate(-45deg) translate(1.1em, -1em);
+    }
+  }
+}
+
+.burger2 {
+  & > div {
+    transition: background 0.4s, font-size 0s;
+    &::before,
+    &::after {
+      transition: font-size 0s;
+      transform-origin: center center;
+    }
+  }
+  &.toggled {
+    > div::before {
+      animation: burg2top 0.4s linear forwards;
+    }
+    > div {
+      background: transparent;
+    }
+    > div::after {
+      animation: burg2bottom 0.4s linear forwards;
+    }
+  }
+  &.unToggled {
+    > div::before {
+      animation: burg2topReset 0.4s linear forwards;
+    }
+    > div {
+      background: var(--color1);
+    }
+    > div::after {
+      animation: burg2bottomReset 0.4s linear forwards;
+    }
+  }
+
+  @keyframes burg2top {
+    0% {
+    }
+    20% {
+      margin-top: 0em;
+      transform: rotate(0deg);
+    }
+    60% {
+      margin-top: 0em;
+      transform: rotate(55deg);
+    }
+    100% {
+      margin-top: 0em;
+      transform: rotate(45deg);
+    }
+  }
+
+  @keyframes burg2bottom {
+    0% {
+    }
+    20% {
+      margin-top: 0em;
+      transform: rotate(0deg);
+    }
+    60% {
+      margin-top: 0em;
+      transform: rotate(-55deg);
+    }
+    100% {
+      margin-top: 0em;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes burg2topReset {
+    0% {
+      margin-top: 0em;
+      transform: rotate(45deg);
+    }
+    20% {
+      transform: rotate(0deg);
+    }
+    60% {
+      margin-top: 1.7em;
+      transform: rotate(0deg);
+    }
+    100% {
+      margin-top: 1.5em;
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes burg2bottomReset {
+    0% {
+      margin-top: 0em;
+      transform: rotate(-45deg);
+    }
+    20% {
+      transform: rotate(0deg);
+    }
+    60% {
+      margin-top: -1.7em;
+      transform: rotate(0deg);
+    }
+    100% {
+      margin-top: -1.5em;
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.burger3 {
+  transition: all 0.7s, font-size 0s;
+  transition-timing-function: cubic-bezier(0.68, 0, 0.265, 1.25);
+  & > div {
+    transition: all 0.5s, font-size 0s;
+    &::before,
+    &::after {
+      transition: all 0.4s 0.2s, font-size 0s;
+      transform-origin: left top;
+    }
+  }
+  &.toggled {
+    transform: rotate(180deg);
+    > div::before {
+      width: 3em;
+      transform: rotate(-45deg) translate(-1.4em, 1.1em);
+    }
+    > div::after {
+      width: 3em;
+      transform: rotate(45deg) translate(-1em, -1.2em);
+    }
+  }
+}
+
+.burger4 {
+  & > div {
+    transition: all 0.4s, font-size 0s;
+    &::before,
+    &::after {
+      transition: font-size 0s;
+      transform-origin: center center;
+    }
+  }
+  &.toggled {
+    > div::before {
+      animation: burg4top 0.4s linear forwards;
+    }
+    > div {
+      animation: burg4 0.4s linear forwards;
+    }
+    > div::after {
+      animation: burg4bottom 0.4s linear forwards;
+    }
+  }
+
+  &.unToggled {
+    > div::before {
+      animation: burg4topReset 0.4s linear forwards;
+    }
+    > div {
+      background: var(--color1);
+      animation: burg4reset 0.4s linear forwards;
+    }
+    > div::after {
+      animation: burg4bottomReset 0.4s linear forwards;
+    }
+  }
+  @keyframes burg4 {
+    50% {
+      transform: rotate(0deg);
+      background: var(--color1);
+    }
+    100% {
+      transform: rotate(360deg);
+      background: #f0ffff00;
+    }
+  }
+  @keyframes burg4top {
+    50% {
+      margin-top: 0;
+      transform: rotate(0deg);
+    }
+    100% {
+      margin-top: 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  @keyframes burg4bottom {
+    50% {
+      margin-top: 0;
+      transform: rotate(0deg);
+    }
+    100% {
+      margin-top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes burg4reset {
+    0% {
+      transform: rotate(0deg);
+      background: #f0ffff00;
+    }
+    50% {
+      transform: rotate(0deg);
+      background: #f0ffff00;
+    }
+    100% {
+      transform: rotate(-360deg);
+      background: #f0ffff;
+    }
+  }
+  @keyframes burg4topReset {
+    0% {
+      transform: rotate(45deg);
+      margin-top: 0;
+    }
+    50% {
+      transform: rotate(0deg);
+      margin-top: 0em;
+    }
+    100% {
+      transform: rotate(0deg);
+      margin-top: 1.5em;
+    }
+  }
+
+  @keyframes burg4bottomReset {
+    0% {
+      transform: rotate(-45deg);
+      margin-top: 0;
+    }
+    50% {
+      margin-top: 0;
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+      margin-top: -1.5em;
+    }
+  }
+}
+
+//////////////////////////////////////////////////
+// Display Stuff
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 100;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background: #24273b;
+  height: 100%;
+  color: #9c9cab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 4rem;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+section {
+  width: 15rem;
+  height: 15rem;
+  background: #151728;
+  border-radius: 4px;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px #00000026, 0 3px 6px #0000001f;
+}
+
+.sliderBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  input {
+    width: 200px;
+  }
+  .range-value {
+    font-weight: 100;
+    font-size: 22px;
+    color: #fff;
+  }
+}
+
+input[type='range'] {
+  width: 100%;
+  margin: 2em 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type='range']:focus {
+  outline: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  background: #ffffff66;
+  border: 0;
+  border-radius: 1.3px;
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  margin-top: -12px;
+  width: 25px;
+  height: 25px;
+  background: #151728;
+  box-shadow: inset 0px 1px 1px #ffffff66, 0px 1px 3px rgba(0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+input[type='range']::-moz-range-track {
+  background: #ffffff;
+  border: 0;
+  border-radius: 1.3px;
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+}
+input[type='range']::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #151728;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+}
+input[type='range']::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 13px 0;
+  color: transparent;
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+}
+input[type='range']::-ms-fill-lower {
+  background: #151728;
+  border: 0;
+  border-radius: 2.6px;
+}
+input[type='range']::-ms-fill-upper {
+  background: #151728;
+  border: 0;
+  border-radius: 2.6px;
+}
+input[type='range']::-ms-thumb {
+  width: 25px;
+  height: 25px;
+  background: #151728;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type='range']:focus::-ms-fill-lower {
+  background: #ffffff;
+}
+input[type='range']:focus::-ms-fill-upper {
+  background: #ffffff;
+}
+
+.customCheckbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  label {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    background: #151728;
+    border-radius: 1em;
+    box-shadow: inset 0px 1px 1px #ffffff66, 0px 1px 3px rgba(0, 0, 0, 1);
+    &:after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      display: block;
+      background: olive;
+      border-radius: 1em;
+      position: absolute;
+      font-size: 1.5em;
+      font-weight: 900;
+      top: 7px;
+      left: 6px;
+      opacity: 0;
+    }
+    &:hover::after {
+    }
+  }
+  input[type='checkbox'] {
+    visibility: hidden;
+    position: absolute;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  > * {
+    background: #15172855;
+    // box-shadow: 0px 0px 20px #00000055;
+    border: 1px solid #ffffff11;
+    padding: 0 3rem;
+    width: 15rem;
+    height: 7rem;
+  }
+}
