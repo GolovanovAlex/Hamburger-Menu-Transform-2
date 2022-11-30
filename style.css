@@ -1,89 +1,321 @@
-:root {
-  --font-size: 1;
-  --color1: #f0ffff;
-  --borderRadius: 1em;
+html {
+  box-sizing: border-box;
 }
-
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
 }
 body {
-  font-size: 1rem;
-  background: #24273b;
-  height: 100%;
-  color: #9c9cab;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  background: #2f4f4f;
   margin: 4rem;
 }
-.main {
+
+.inner {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
-.section {
+
+.burger-box {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15rem;
   height: 15rem;
-  background-color: #151728;
+  background: #256d7b;
   border-radius: 4px;
-  margin: 0.5rem;
   box-shadow: 0 2px 4px #00000026, 0 3px 6px #0000001f;
+  margin: 0.5rem;
 }
+
 .burger {
   font-size: var(--font-size);
-  cursor: pointer;
   padding: 3em 1.5em;
-}
-.burger.showHitArea {
-  border: 1px solid red;
+  cursor: pointer;
 }
 .burger > div {
   width: 4em;
   height: 0.5em;
-  border-radius: var(--borderRadius);
-  background: var(--color1);
+  background-color: #ffffff;
+  border-radius: 8px;
 }
-.burger::before,
-.burger::after {
+.burger > div::before {
   content: '';
   display: block;
   position: absolute;
   width: 4em;
   height: 0.5em;
-  background: var(--color1);
-  border-radius: var(--borderRadius);
-  transition: font-size 0s;
-}
-.burger::before {
+  background-color: #ffffff;
+  border-radius: 8px;
   margin-top: -1.5em;
 }
-.burger::after {
+.burger > div::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 4em;
+  height: 0.5em;
+  background-color: #ffffff;
+  border-radius: 8px;
   margin-top: 1.5em;
 }
-/* ---- ---- Burger 1 ---- ---- */
+
+/* ---------------Burger One -----------*/
 .burger1 {
-  transition: all 0.7s, font-size 0s;
+  transition: all 0.7s;
   transition-timing-function: cubic-bezier(0.68, -0.35, 0.265, 1.35);
 }
 .burger1 > div {
-  transition: all 0.1s 0.3s, font-size 0s;
+  transition: all 0.1s 0.3s;
 }
-.burger1::before,
-.burger1::after {
-  transition: all 0.3s 0.2s, font-size 0s;
+.burger1 > div::before,
+.burger1 > div::after {
+  transition: all 0.3s 0.2s;
 }
 .burger1.toggled {
   transform: rotate(180deg);
 }
-.burger1 > div::before {
+.burger1.toggled > div {
+  background: transparent;
+}
+.burger1.toggled > div::before {
   transform: rotate(45deg) translate(1.1em, 1em);
+}
+.burger1.toggled > div::after {
+  transform: rotate(-45deg) translate(1.1em, -1em);
+}
+/* ---------------Burger Two -----------*/
+
+.burger2 > div {
+  transition: background 0.4s;
+}
+.burger2 > div::before,
+.burger2 > div::after {
+  transform-origin: center center;
+}
+.burger2.toggled > div {
+  background: transparent;
+}
+.burger2.toggled > div::before {
+  animation: burg2top 0.4s linear forwards;
+}
+.burger2.toggled > div::after {
+  animation: burg2bottom 0.4s linear forwards;
+}
+.burger2.unToggled > div {
+  background: #ffffff;
+}
+.burger2.unToggled > div::before {
+  animation: burg2topReset 0.4s linear forwards;
+}
+.burger2.unToggled > div::after {
+  animation: burg2bottomReset 0.4s linear forwards;
+}
+@keyframes burg2top {
+  0% {
+  }
+  20% {
+    margin-top: 0em;
+    transform: rotate(0deg);
+  }
+  60% {
+    margin-top: 0em;
+    transform: rotate(55deg);
+  }
+  100% {
+    margin-top: 0em;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes burg2bottom {
+  0% {
+  }
+  20% {
+    margin-top: 0em;
+    transform: rotate(0deg);
+  }
+  60% {
+    margin-top: 0em;
+    transform: rotate(-55deg);
+  }
+  100% {
+    margin-top: 0em;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes burg2topReset {
+  0% {
+    margin-top: 0em;
+    transform: rotate(45deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
+  60% {
+    margin-top: 1.7em;
+    transform: rotate(0deg);
+  }
+  100% {
+    margin-top: 1.5em;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes burg2bottomReset {
+  0% {
+    margin-top: 0em;
+    transform: rotate(-45deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
+  60% {
+    margin-top: -1.7em;
+    transform: rotate(0deg);
+  }
+  100% {
+    margin-top: -1.5em;
+    transform: rotate(0deg);
+  }
+}
+
+/* ---------------Burger Three -----------*/
+
+.burger3 {
+  transition: all 0.7s;
+  transition-timing-function: cubic-bezier(0.68, 0, 0.265, 1.25);
+}
+.burger3 > div {
+  transition: all 0.5s;
+}
+.burger3 > div::before,
+.burger3 > div::after {
+  transition: all 0.4s 0.2s;
+  transform-origin: left top;
+}
+.burger3.toggled > div {
+  transform: rotate(180deg);
+}
+.burger3.toggled > div::before {
+  width: 3em;
+  transform: rotate(-45deg) translate(-1.4em, 1.1em);
+}
+.burger3.toggled > div::after {
+  width: 3em;
+  transform: rotate(45deg) translate(-1em, -1.2em);
+}
+
+/* ---------------Burger Four -----------*/
+
+.burger4 > div {
+  transition: all 0.4s;
+}
+.burger4 > div::before,
+.burger4 > div::after {
+  transform-origin: center center;
+}
+.burger4.toggled > div {
+  animation: burg4 0.4s linear forwards;
+}
+.burger4.toggled > div::before {
+  animation: burg4top 0.4s linear forwards;
+}
+.burger4.toggled > div::after {
+  animation: burg4bottom 0.4s linear forwards;
+}
+.burger4.unToggled > div {
+  background-color: #ffffff;
+  animation: burg4reset 0.4s linear forwards;
+}
+.burger4.unToggled > div::before {
+  animation: burg4topReset 0.4s linear forwards;
+}
+.burger4.unToggled > div::after {
+  animation: burg4bottomReset 0.4s linear forwards;
+}
+
+@keyframes burg4 {
+  50% {
+    transform: rotate(0deg);
+    background: #ffffff;
+  }
+  100% {
+    transform: rotate(360deg);
+    background: #f0ffff00;
+  }
+}
+@keyframes burg4top {
+  50% {
+    margin-top: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    margin-top: 0;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes burg4bottom {
+  50% {
+    margin-top: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    margin-top: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes burg4reset {
+  0% {
+    transform: rotate(0deg);
+    background: #f0ffff00;
+  }
+  50% {
+    transform: rotate(0deg);
+    background: #f0ffff00;
+  }
+  100% {
+    transform: rotate(-360deg);
+    background: #ffffff;
+  }
+}
+@keyframes burg4topReset {
+  0% {
+    transform: rotate(45deg);
+    margin-top: 0;
+  }
+  50% {
+    transform: rotate(0deg);
+    margin-top: 0em;
+  }
+  100% {
+    transform: rotate(0deg);
+    margin-top: 1.5em;
+  }
+}
+
+@keyframes burg4bottomReset {
+  0% {
+    transform: rotate(-45deg);
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    margin-top: -1.5em;
+  }
 }
